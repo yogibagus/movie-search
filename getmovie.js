@@ -13,6 +13,15 @@ $('#search-input').on('keyup', function(e) {
 });
 
 $('#movie-list').on('click','.see-details', function(e) {
+$('.modal-body').html('');
+$('#loading-detail').html(`
+	<div class="d-flex justify-content-center">
+			<div class="spinner-border" role="status">
+				<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+`);
+
 	$.ajax({
 		url : 'http://omdbapi.com',
 		type : 'get',
@@ -23,6 +32,7 @@ $('#movie-list').on('click','.see-details', function(e) {
 		},
 		success: function (result) {
 			if (result.Response === "True"){
+				$('#loading-detail').html('');
 				$('.modal-body').html(`
 					<div class="container-fluid">
 						<div class="row">
@@ -56,7 +66,7 @@ $('#movie-list').on('click','.see-details', function(e) {
 
 function getResult(){
 	$('#movie-list').html('')
-	
+
 	$('#loading').html(`
 					<div class="row mb-5" id="covid-box">
 						<div class="col-md-12">
@@ -94,7 +104,6 @@ function getResult(){
 					<p><strong>Total result</strong> : `+ result.totalResults +` movie<br><small><i>*) Only showing max 10 movie list in a row.</i></small></p>
 				`)
 
-
 				let movies = result.Search;
 
 				$.each(movies, function(i , data){
@@ -116,6 +125,8 @@ function getResult(){
 
 			}else{
 				$('#movie-total').html('');
+				$('#loading').html('');
+				$('#loading-detail').html('');
 				$('#movie-list').html(`
 					<div class="col-md-12">
 					<h1 class="text-center">`+ result.Error +`<h1>
