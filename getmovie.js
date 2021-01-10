@@ -50,6 +50,9 @@ $('#loading-detail').html(`
 									<li class="list-group-item"><b>Genre:</b> `+ result.Genre +`</li>
 								</ul>
 								<ul class="list-group">
+									<li class="list-group-item"><b>Country:</b> `+ result.Country +`</li>
+								</ul>
+								<ul class="list-group">
 									<li class="list-group-item"><b>Director:</b> `+ result.Director +`</li>
 								</ul>
 								<ul class="list-group">
