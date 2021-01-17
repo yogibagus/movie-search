@@ -23,7 +23,7 @@ $('#loading-detail').html(`
 `);
 
 	$.ajax({
-		url : 'http://omdbapi.com',
+		url : 'https://omdbapi.com',
 		type : 'get',
 		dataType : 'json',
 		data : {
@@ -92,7 +92,7 @@ function getResult(){
 				`)
 
 	$.ajax({
-		url : 'http://omdbapi.com',
+		url : 'https://omdbapi.com',
 		type : 'get',
 		dataType : 'json',
 		data : {
